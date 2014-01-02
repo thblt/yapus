@@ -178,7 +178,7 @@ if (isset($_GET['op'])) {
         case 'shorten':
             if (!isset($_POST['target'])) break;
             $target = $_POST['target'];
-            $custom = shortcut_decode($_POST['shortcut']);
+            $custom = $custom ? shortcut_decode($_POST['shortcut']) : false;
             if ($custom>$maxint) {
                 $tpl['sh_shortcut'] = $_POST['shortcut'];
                 $errors['sh_shortcut'] = 'Custom shortcut too long.';
@@ -229,7 +229,7 @@ EOT;
             
             $id = $custom ? $custom : query($query, array($_POST['target']))[0][0];
             if(query("INSERT INTO yapus VALUES (?, ?)", [$id, $target]) === false) {
-                flash("Something went wrong, not created.", "warning");
+                flash("Something went wrong, not created (attempted at ".$id.")", "warning");
             } else {
                 $url = url($id);
                 flash("Shortened to <a href='$url'>$url</a>.", "success");
