@@ -1,0 +1,25 @@
+<?php
+
+// Database
+
+$db = "mysql:host=localhost;dbname=yapus";
+$db_user = "user";
+$db_password = "password";
+$db_table = "yapus";
+
+$maxint = 18446744073709551615; // MySQL greatest unsigned bigint. Adapt to your DB engine if needed.
+
+// URL settings
+
+$host = "example.com"; # Eye-candy only
+$protocol = "http"; # Switch to https if you use it.
+
+// 404 page
+
+// $errorPage = "http://thb.lt/404" ; // If set, errors will redirect to this page.
+
+// Character set
+
+$charset = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+?>
